@@ -1,0 +1,12 @@
+
+{% extends "admin/base.html" %}
+{% load i18n static %}
+
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+
+{% block branding %}
+  <img src="{% static "img/gnosis_logo.svg" %}" style="float: left; max-width: 150px;margin-right: 40px;" />
+  <h1 id="site-name">GnosisDB Administration Panel</h1>
+{% endblock %}
+#182a36
+{% block nav-global %}{% endblock %}

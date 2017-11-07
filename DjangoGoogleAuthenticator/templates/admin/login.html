@@ -1,0 +1,40 @@
+{% extends "admin/base_site.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div id="container">
+        <div id="content" class="colM">
+            <form id="login-form" method="post"
+                  action="">
+                {% csrf_token %}
+                <table class="table">
+                    <tr>
+                        <td><label for="id_username">Username</label></td>
+                        <td><input id="id_username" name="username"
+                                   type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="id_password">Password</label></td>
+                        <td><input id="id_password" name="password"
+                                   type="password" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="id_password">2FA Code</label></td>
+                        <td><input id="id_2fa" name="2fa"
+                                   type="text" class="form-control"></td>
+                    </tr>
+                </table>
+                {% if form.errors %}
+                  <p class="errornote">
+                      Your username, password or 2FA not valid.
+                      Please try again.
+                  </p>
+                {% endif %}
+
+                <input type="submit" value="Login"
+                       class="btn btn-primary pull-right" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </div>
+{% endblock %}
