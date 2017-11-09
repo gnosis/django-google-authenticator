@@ -1,7 +1,7 @@
 from subprocess import check_call, CalledProcessError
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-from DjangoGoogleAuthenticator.models import Google
+from django_google_authenticator.models import Google
 from django.conf import settings
 import pyotp
 

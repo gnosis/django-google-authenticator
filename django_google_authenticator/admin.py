@@ -4,7 +4,7 @@ from models import Google
 
 class GoogleAdminSite(AdminSite):
     site_header = 'GnosisDB Administration'
-    # template_name = 'DjangoGoogleAuthenticator/templates/admin/login.html'
+    # template_name = 'django_google_authenticator/templates/admin/login.html'
 
 admin = GoogleAdminSite(name='GoogleAdmin')
 

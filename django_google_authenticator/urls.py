@@ -1,4 +1,4 @@
-"""DjangoGoogleAuthenticator URL Configuration
+"""django_google_authenticator URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from DjangoGoogleAuthenticator.views import login_view
-from DjangoGoogleAuthenticator.admin import admin
+from django_google_authenticator.views import login_view
+from django_google_authenticator.admin import admin
 
 urlpatterns = [
     # url(r'^login/$', login_view),
