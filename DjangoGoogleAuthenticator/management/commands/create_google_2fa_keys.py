@@ -9,10 +9,28 @@ import pyotp
 class Command(BaseCommand):
     help = 'Generates Google Auth keys and enables 2FA'
 
+    def add_arguments(self, parser):
+        # Positional arguments
+        # parser.add_argument('username', nargs='+', type=str)
+
+        # Named (optional) arguments
+        parser.add_argument(
+            '--username',
+            default=None,
+            help='Enable 2FA for all Admin users',
+        )
+
     def handle(self, *args, **options):
         try:
+            print args
+            print options
             self.stdout.write(self.style.SUCCESS('Starting creating Google Auth keys'))
-            users = User.objects.filter(is_superuser=True)
+
+            if options.get('username'):
+                users = User.objects.filter(is_superuser=True, username=options.get('username'))
+            else:
+                users = User.objects.filter(is_superuser=True)
+
             for user in users:
                 if not hasattr(user, 'google'):
                     # create google key for that user
@@ -22,6 +40,8 @@ class Command(BaseCommand):
                     google.gauth_key = pyotp.random_base32()
                     google.save()
                     self.stdout.write(self.style.SUCCESS('Auth key for user {} created: KEY: {}'.format(user.username, google.gauth_key)))
+                else:
+                    self.stdout.write(self.style.WARNING('2FA already active for user {}'.format(user.username)))
             self.stdout.write(self.style.SUCCESS('Google Auth creation process ended successfully'))
         except Exception as e:
             self.stdout.write(self.style.ERROR('Google Auth error: {}'.format(e.message)))
