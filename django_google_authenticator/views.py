@@ -56,4 +56,4 @@ def login_view(request, authentication_form=AuthenticationForm,
     if extra_context is not None:
         context.update(extra_context)
 
-    return TemplateResponse(request, 'admin/login.html', context)
+    return TemplateResponse(request, 'django_google_authenticator/admin/login.html', context)
