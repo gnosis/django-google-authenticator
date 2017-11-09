@@ -10,22 +10,18 @@ class Command(BaseCommand):
     help = 'Generates Google Auth keys and enables 2FA'
 
     def add_arguments(self, parser):
-        # Positional arguments
-        # parser.add_argument('username', nargs='+', type=str)
-
         # Named (optional) arguments
         parser.add_argument(
             '--username',
             default=None,
-            help='Enable 2FA for all Admin users',
+            help='Enable 2FA for a certain admin user',
         )
 
     def handle(self, *args, **options):
         try:
-            print args
-            print options
-            self.stdout.write(self.style.SUCCESS('Starting creating Google Auth keys'))
-
+            self.stdout.write(self.style.SUCCESS('Starting enabling Google Auth keys'))
+            users = None
+            # If username is not None, we passed a value via parameters
             if options.get('username'):
                 users = User.objects.filter(is_superuser=True, username=options.get('username'))
             else:
