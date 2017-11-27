@@ -15,7 +15,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=requirements,
-    license='GPLv3',
     description='A Django app adding Google Authenticator feature',
     url='https://github.com/gnosis/django-google-authenticator',
     author='Gnosis',
