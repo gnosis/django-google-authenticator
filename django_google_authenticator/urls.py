@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
-from views import login_view
-from admin import admin
+from .admin import admin
+from .views import login_view
 
 urlpatterns = [
     url(r'^admin/login/$', login_view),
