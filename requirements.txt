@@ -1,2 +1,2 @@
-Django==1.11
+Django==2.0.2
 pyotp==2.2.6
