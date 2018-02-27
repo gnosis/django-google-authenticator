@@ -1,4 +1,5 @@
 import os
+
 from setuptools import find_packages, setup
 
 # allow setup.py to be run from any path
@@ -11,7 +12,7 @@ with open('requirements.txt', 'r') as f:
 
 setup(
     name='django-google-authenticator',
-    version='0.3',
+    version='0.4',
     packages=find_packages(),
     include_package_data=True,
     install_requires=requirements,
